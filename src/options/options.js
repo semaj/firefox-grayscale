@@ -1,5 +1,5 @@
 function renderOptions() {
-  return browser.storage.local.get('settings').then((store) => {
+  return browser.storage.sync.get('settings').then((store) => {
     const theme = (store.settings && store.settings.theme && store.settings.theme === 'dark') ? 'dark' : 'light';
     document.getElementById('theme').checked = theme === 'dark';
   });
@@ -8,7 +8,7 @@ function renderOptions() {
 document.getElementById('theme').addEventListener('click', (e) => {
   const theme = e.target.checked ? 'dark' : 'light';
   const prefix = e.target.checked ? 'light' : 'dark';
-  browser.storage.local.set({
+  browser.storage.sync.set({
     settings: {
       theme
     }

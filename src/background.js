@@ -1,5 +1,5 @@
 function getThemedPrefix() {
-  return browser.storage.local.get('settings').then((store) => {
+  return browser.storage.sync.get('settings').then((store) => {
     if (store.settings && store.settings.theme && store.settings.theme === 'dark') {
       return 'light';
     }
@@ -18,9 +18,9 @@ function init() {
 // installation or updating the extension
 browser.runtime.onInstalled.addListener((details) => {
   if (details.reason === 'install' || details.reason === 'update') {
-    browser.storage.local.get('settings').then((store) => {
+    browser.storage.sync.get('settings').then((store) => {
       if (store.settings === undefined) {
-        browser.storage.local.set({
+        browser.storage.sync.set({
           settings: {
             theme: 'light'
           }

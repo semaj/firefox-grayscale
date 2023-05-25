@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Scalegray",
-  "version": "0.6.1",
-  "description": "Make sites grayscale",
+  "version": "0.7.0",
+  "description": "Make distracting sites grayscale",
   "homepage_url": "https://github.com/semaj/firefox-grayscale",
   "icons": {
     "48": "icons/icon-dark.svg"
@@ -15,6 +15,12 @@
     "scripts": [
       "background.js"
     ]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{64ebe59a-960d-4cb8-8eaf-55c50ad8e05f}",
+      "strict_min_version": "42.0"
+    }
   },
   "browser_action": {
     "default_icon": "icons/icon-dark.svg",
@@ -35,7 +41,17 @@
       ],
       "js": [
         "content-script.js"
-      ]
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content-script.js"
+      ],
+      "run_at": "document_start"
     }
   ],
   "options_ui": {

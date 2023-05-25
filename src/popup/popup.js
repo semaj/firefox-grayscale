@@ -1,17 +1,17 @@
 import { getUrlElement } from '../lib.js';
 
 function toggleAll() {
-  return browser.storage.local.get('allSites').then((store) => {
+  return browser.storage.sync.get('allSites').then((store) => {
     if (store.allSites) {
-      browser.storage.local.set({ allSites: false });
+      browser.storage.sync.set({ allSites: false });
     } else {
-      browser.storage.local.set({ allSites: true });
+      browser.storage.sync.set({ allSites: true });
     };
   });
 }
 
 function togglePage() {
-  return browser.storage.local.get('pages').then((store) => {
+  return browser.storage.sync.get('pages').then((store) => {
     let pages = (store.pages && store.pages.length) ? store.pages : [];
     browser.tabs.query({ currentWindow: true, active: true }, tabs => {
       if (tabs[0]) {
@@ -21,14 +21,14 @@ function togglePage() {
         } else {
           pages.push(host);
         }
-        browser.storage.local.set({ pages });
+        browser.storage.sync.set({ pages });
       }
     });
   });
 }
 
 function toggleExclude() {
-  return browser.storage.local.get('exclude').then((store) => {
+  return browser.storage.sync.get('exclude').then((store) => {
     let exclude = (store.exclude && store.exclude.length) ? store.exclude : [];
     browser.tabs.query({ currentWindow: true, active: true }, tabs => {
       if (tabs[0]) {
@@ -38,14 +38,14 @@ function toggleExclude() {
         } else {
           exclude.push(host);
         }
-        browser.storage.local.set({ exclude });
+        browser.storage.sync.set({ exclude });
       }
     });
   });
 }
 
 function setValues() {
-  browser.storage.local.get().then((store) => {
+  browser.storage.sync.get().then((store) => {
     document.getElementById('ToggleAll').checked = !!store.allSites
     let pages = (store.pages && store.pages.length) ? store.pages : [];
     let exclude = (store.exclude && store.exclude.length) ? store.exclude : [];
