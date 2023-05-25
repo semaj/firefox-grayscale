@@ -1,18 +1,18 @@
 {
-  "name": "grayscale-browse",
+  "name": "scalegray",
   "version": "0.6.1",
-  "description": "Small firefox extension",
+  "description": "Make sites grayscale",
   "main": "src/manifest.json",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rewkha/firefox-grayscale.git"
+    "url": "git+https://github.com/semaj/firefox-grayscale.git"
   },
-  "author": "rewkha",
+  "author": "semaj",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rewkha/firefox-grayscale/issues"
+    "url": "https://github.com/semaj/firefox-grayscale/issues"
   },
-  "homepage": "https://github.com/rewkha/firefox-grayscale",
+  "homepage": "https://github.com/semaj/firefox-grayscale",
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.1"
